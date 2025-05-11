@@ -31,7 +31,7 @@ OfficeInventory/
 
 1. Clone the repository
 
-git clone https://github.com/yourusername/OfficeInventory.git
+git clone https://github.com/emelsi23/OfficeInventoryApp.git
 cd OfficeInventory
 
 2. Configure the connection string
