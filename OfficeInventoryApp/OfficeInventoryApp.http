@@ -1,0 +1,6 @@
+@OfficeInventoryApp_HostAddress = http://localhost:5151
+
+GET {{OfficeInventoryApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
