@@ -27,8 +27,7 @@ OfficeInventory/
 │   └── DependencyInjection/   # Service registration (dependency injection)
 
 ---
-
-🚀 Getting Started
+ Getting Started
 
 1. Clone the repository
 
@@ -62,7 +61,7 @@ dotnet run --project OfficeInventoryApp
 
 ---
 
-📬 Main Endpoints
+Main Endpoints
 
 | Method | Endpoint               | Description                             |
 |--------|------------------------|-----------------------------------------|
@@ -91,7 +90,7 @@ http://localhost:5173
 
 ---
 
-✍️ Author
+ Author
 
 Victor E. Sánchez Garcia
 .NET & Vue.js Developer
