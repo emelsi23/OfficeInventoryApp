@@ -7,14 +7,9 @@ namespace OfficeInventoryApp.Controllers
 {
     [ApiController]
     [Route("api/maintenancetasks")]
-    public class MaintenanceTasksController : ControllerBase
+    public class MaintenanceTasksController(IMaintenanceTaskService service) : ControllerBase
     {
-        private readonly IMaintenanceTaskService _service;
-
-        public MaintenanceTasksController(IMaintenanceTaskService service)
-        {
-            _service = service;
-        }
+        private readonly IMaintenanceTaskService _service = service;
 
         [HttpGet]
         public async Task<IActionResult> GetAll() =>
@@ -38,17 +33,15 @@ namespace OfficeInventoryApp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] MaintenanceTaskDto dto)
         {
-            var success = await _service.UpdateAsync(id, dto);
-            if (!success) return NotFound();
+            await _service.UpdateAsync(id, dto);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var success = await _service.DeleteAsync(id);
-            if (!success) return NotFound();
-            return NoContent();
+           await _service.DeleteAsync(id);
+           return NoContent();
         }
     }
 }

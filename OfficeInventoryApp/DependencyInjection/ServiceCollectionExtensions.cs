@@ -32,6 +32,7 @@ namespace OfficeInventoryApp.DependencyInjection
 
             // Repositories
             services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+            services.AddScoped<IMaintenanceTaskRepository, MaintenanceTaskRepository>();
             services.AddScoped<IEquipmentMaintenanceRepository, EquipmentMaintenanceRepository>();
 
             // Services
@@ -42,8 +43,9 @@ namespace OfficeInventoryApp.DependencyInjection
             services.AddScoped<IValidator<MaintenanceTaskDto>, MaintenanceTaskDtoValidator>();
 
             // Controllers + FluentValidation
-            services.AddControllers()
-                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<EquipmentDtoValidator>());
+            services.AddControllers();
+            services.AddValidatorsFromAssemblyContaining<EquipmentDtoValidator>();
+     
 
             // Swagger
             services.AddEndpointsApiExplorer();

@@ -1,12 +1,3 @@
-using FluentValidation;
-using Microsoft.EntityFrameworkCore;
-using OfficeInventory.Application.DTOs;
-using OfficeInventory.Application.Interfaces;
-using OfficeInventory.Infrastructure.Data;
-using OfficeInventory.Infrastructure.Repositories;
-using OfficeInventory.Application.Validators;
-using OfficeInventory.Infrastructure.Services;
-using FluentValidation.AspNetCore;
 using OfficeInventoryApp.DependencyInjection;
 
 

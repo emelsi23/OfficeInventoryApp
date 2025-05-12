@@ -9,25 +9,19 @@ namespace OfficeInventoryApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EquipmentMaintenancesController : ControllerBase
+    public class EquipmentMaintenancesController(InventaryDbContext context) : ControllerBase
     {
 
-        private readonly InventaryDbContext _context;
-
-        public EquipmentMaintenancesController(InventaryDbContext context)
-        {
-            _context = context;
-        }
+        private readonly InventaryDbContext _context = context;
 
         [HttpPost("assign")]
         public async Task<IActionResult> AssignEquipments([FromBody] AssignEquipmentsDto model)
         {
-            // Eliminar relaciones existentes
+
             var existing = _context.EquipmentMaintenances
                 .Where(em => em.MaintenanceTaskId == model.MaintenanceTaskId);
             _context.EquipmentMaintenances.RemoveRange(existing);
 
-            // Agregar nuevas relaciones
             var newRelations = model.EquipmentIds
                 .Select(eid => new EquipmentMaintenance
                 {
@@ -46,7 +40,7 @@ namespace OfficeInventoryApp.Controllers
         {
             var equipments = await _context.EquipmentMaintenances
                 .Where(em => em.MaintenanceTaskId == taskId)
-                .Select(em => em.Equipment)
+                .Select(em => em.EquipmentId)
                 .ToListAsync();
 
             return Ok(equipments);

@@ -12,8 +12,8 @@ namespace OfficeInventory.Application.Interfaces
         Task<IEnumerable<MaintenanceTaskDto>> GetAllAsync();
         Task<MaintenanceTaskDto> GetByIdAsync(int id);
         Task<MaintenanceTaskDto> CreateAsync(MaintenanceTaskDto dto);
-        Task<bool> UpdateAsync(int id, MaintenanceTaskDto dto);
-        Task<bool> DeleteAsync(int id);
+        Task UpdateAsync(int id, MaintenanceTaskDto dto);
+        Task DeleteAsync(int id);
 
     }
 }

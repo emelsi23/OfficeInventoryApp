@@ -7,15 +7,10 @@ namespace OfficeInventoryApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EquipmentTypesController : ControllerBase
+    public class EquipmentTypesController(InventaryDbContext context) : ControllerBase
     {
 
-        private readonly InventaryDbContext _context;
-
-        public EquipmentTypesController(InventaryDbContext context)
-        {
-            _context = context;
-        }
+        private readonly InventaryDbContext _context = context;
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EquipmentType>>> GetEquipmentTypes()

@@ -22,7 +22,14 @@ namespace OfficeInventory.Infrastructure.Data
 
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<EquipmentType>().HasData(
+             new EquipmentType { Id = 1, Description = "Laptop" },
+             new EquipmentType { Id = 2, Description = "Desktop" },
+             new EquipmentType { Id = 3, Description = "Printer" },
+             new EquipmentType { Id = 4, Description = "Monitor" }
+             );
+
         }
     }
-
+        
 }
