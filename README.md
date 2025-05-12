@@ -59,6 +59,7 @@ dotnet ef migrations add InitialCreate
 
 dotnet run --project OfficeInventoryApp
 
+6. Find the SQL Script to CREATE DATABASE in scripts folder
 ---
 
 Main Endpoints
