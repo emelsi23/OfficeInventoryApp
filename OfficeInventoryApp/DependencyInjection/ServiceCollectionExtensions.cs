@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using FluentValidation;
-using FluentValidation.AspNetCore;
 using OfficeInventory.Application.DTOs;
 using OfficeInventory.Application.Interfaces;
 using OfficeInventory.Application.Validators;
@@ -45,7 +43,7 @@ namespace OfficeInventoryApp.DependencyInjection
             // Controllers + FluentValidation
             services.AddControllers();
             services.AddValidatorsFromAssemblyContaining<EquipmentDtoValidator>();
-     
+
 
             // Swagger
             services.AddEndpointsApiExplorer();

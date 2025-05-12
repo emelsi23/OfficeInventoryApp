@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OfficeInventory.Application.DTOs;
 using OfficeInventory.Application.Interfaces;
 
@@ -43,8 +42,8 @@ namespace OfficeInventoryApp.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-           await _service.DeleteAsync(id);
-           return NoContent();
+            await _service.DeleteAsync(id);
+            return NoContent();
         }
 
         [HttpGet("{equipmentId}/maintenances")]

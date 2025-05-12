@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using OfficeInventory.Domain.Entities;
-using System.Threading.Tasks;
 
 namespace OfficeInventory.Infrastructure.Data
 {
@@ -31,5 +26,5 @@ namespace OfficeInventory.Infrastructure.Data
 
         }
     }
-        
+
 }

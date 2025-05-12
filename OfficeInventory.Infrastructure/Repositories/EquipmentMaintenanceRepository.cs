@@ -2,11 +2,6 @@
 using OfficeInventory.Application.Interfaces;
 using OfficeInventory.Domain.Entities;
 using OfficeInventory.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OfficeInventory.Infrastructure.Repositories
 {

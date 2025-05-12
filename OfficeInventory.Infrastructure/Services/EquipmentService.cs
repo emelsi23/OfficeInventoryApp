@@ -2,12 +2,6 @@
 using OfficeInventory.Application.DTOs;
 using OfficeInventory.Application.Interfaces;
 using OfficeInventory.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OfficeInventory.Infrastructure.Services
 {
@@ -85,7 +79,7 @@ namespace OfficeInventory.Infrastructure.Services
 
             _repo.Update(entity);
             await _repo.SaveAsync();
-       
+
         }
 
         public async Task DeleteAsync(int id)
