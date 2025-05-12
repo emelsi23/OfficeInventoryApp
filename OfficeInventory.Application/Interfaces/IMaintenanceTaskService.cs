@@ -9,6 +9,12 @@ namespace OfficeInventory.Application.Interfaces
         Task<MaintenanceTaskDto> CreateAsync(MaintenanceTaskDto dto);
         Task UpdateAsync(int id, MaintenanceTaskDto dto);
         Task DeleteAsync(int id);
+        Task<IEnumerable<int>> GetEquipmentsByTaskId(int taskId);
+
+        Task AssignEquipmentsBy(AssignEquipmentsDto model);
+
+
+
 
     }
 }

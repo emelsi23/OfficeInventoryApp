@@ -1,20 +1,23 @@
 ﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using OfficeInventory.Application.DTOs;
 using OfficeInventory.Application.Interfaces;
 using OfficeInventory.Domain.Entities;
+using OfficeInventory.Infrastructure.Repositories;
 
 namespace OfficeInventory.Infrastructure.Services
 {
     public class MaintenanceTaskService : IMaintenanceTaskService
     {
         private readonly IMaintenanceTaskRepository _repo;
-        //private readonly IMaintenanceTaskMaintenanceRepository _maintenanceRepo;
+        private readonly IEquipmentMaintenanceRepository _maintenanceRepo;
         private readonly IValidator<MaintenanceTaskDto> _validator;
 
-        public MaintenanceTaskService(IMaintenanceTaskRepository repo, IValidator<MaintenanceTaskDto> validator)
+        public MaintenanceTaskService(IMaintenanceTaskRepository repo, IValidator<MaintenanceTaskDto> validator, IEquipmentMaintenanceRepository maintenanceRepo)
         {
             _repo = repo;
             _validator = validator;
+            _maintenanceRepo = maintenanceRepo;
 
         }
 
@@ -79,14 +82,22 @@ namespace OfficeInventory.Infrastructure.Services
             await _repo.SaveAsync();
         }
 
-        //public async Task<IEnumerable<MaintenanceTaskDto>> GetMaintenancesByMaintenanceTaskIdAsync(int equipmentId)
-        //{
-        //    var tasks = await _maintenanceRepo.GetTasksByMaintenanceTaskIdAsync(equipmentId);
-        //    return tasks.Select(t => new MaintenanceTaskDto
-        //    {
-        //        Id = t.Id,
-        //        Description = t.Description
-        //    });
-        //}
+
+         public async Task<IEnumerable<int>> GetEquipmentsByTaskId(int taskId)
+        {
+            var equipments = await _maintenanceRepo.GetEquipmentsByTaskId(taskId);
+
+            return equipments;
+        }
+
+
+        public async Task AssignEquipmentsBy(AssignEquipmentsDto model)
+        {
+
+             await _maintenanceRepo.RemoveAllByTask(model.MaintenanceTaskId);
+
+            await _maintenanceRepo.AddEquipmentsByTask(model.MaintenanceTaskId, model.EquipmentIds);
+
+        }
     }
 }

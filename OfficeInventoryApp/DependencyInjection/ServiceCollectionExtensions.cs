@@ -39,6 +39,7 @@ namespace OfficeInventoryApp.DependencyInjection
 
             // Validators
             services.AddScoped<IValidator<MaintenanceTaskDto>, MaintenanceTaskDtoValidator>();
+            services.AddScoped<IValidator<EquipmentDto>, EquipmentDtoValidator>();
 
             // Controllers + FluentValidation
             services.AddControllers();

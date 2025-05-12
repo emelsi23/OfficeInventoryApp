@@ -5,7 +5,10 @@ namespace OfficeInventory.Application.Interfaces
     public interface IEquipmentMaintenanceRepository
     {
         Task<IEnumerable<MaintenanceTask>> GetTasksByEquipmentIdAsync(int equipmentId);
-        Task<IEnumerable<Equipment>> GetEquipmentsByTaskId(int taskId);
+        Task<IEnumerable<int>> GetEquipmentsByTaskId(int taskId);
+        Task RemoveAllByTask(int taskId);
+        Task AddEquipmentsByTask(int taskId, IEnumerable<int> equipmentIds);
+
 
     }
 }

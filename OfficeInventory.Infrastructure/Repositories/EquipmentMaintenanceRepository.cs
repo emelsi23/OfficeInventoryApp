@@ -18,12 +18,40 @@ namespace OfficeInventory.Infrastructure.Repositories
         }
 
 
-        public async Task<IEnumerable<Equipment>> GetEquipmentsByTaskId(int taskId)
+        public async Task<IEnumerable<int>> GetEquipmentsByTaskId(int taskId)
         {
             return await _context.EquipmentMaintenances
                 .Where(em => em.MaintenanceTaskId == taskId)
-                .Select(em => em.Equipment)
+                .Select(em => em.EquipmentId)
                 .ToListAsync();
         }
+
+
+        public async Task RemoveAllByTask(int taskId)
+        {
+            var existing = await _context.EquipmentMaintenances
+                .Where(em => em.MaintenanceTaskId == taskId)
+                .ToListAsync();
+            
+            _context.EquipmentMaintenances.RemoveRange(existing);
+            _context.SaveChanges();
+
+        }
+
+        public async Task AddEquipmentsByTask(int taskId, IEnumerable<int> equipmentIds)
+        {
+            var newRelations = equipmentIds
+               .Select(eid => new EquipmentMaintenance
+               {
+                   EquipmentId = eid,
+                   MaintenanceTaskId = taskId
+               });
+
+            _context.EquipmentMaintenances.AddRange(newRelations);
+            await _context.SaveChangesAsync();
+
+        }
+
+
     }
 }
